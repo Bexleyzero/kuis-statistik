@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kuesioner: Kualitas Grafis dan Gameplay terhadap Kepuasan Pemain Game Mobile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070a1c;--card:#0f1530;--line:#2a2f6b;--txt:#e8ecff;--mut:#97a0d6;--pur:#a64dff;--blu:#2e8bff;--cy:#22e6ff;--err:#ff5d8f;
+--fd:'Orbitron','Segoe UI',sans-serif;--fb:'Rajdhani','Segoe UI',sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:radial-gradient(900px 500px at 85% -10%,#2a1260 0,transparent 60%),radial-gradient(800px 500px at -10% 30%,#06306a 0,transparent 60%),var(--bg);color:var(--txt);font:600 18px/1.5 var(--fb);min-height:100vh;
+background-attachment:fixed;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 60px}
+h1,h2,h3{font-family:var(--fd);margin:0;letter-spacing:.02em}
+.hero{text-align:center;padding:28px 0 8px}
+.hero svg{width:min(320px,80%);height:auto;filter:drop-shadow(0 0 18px #7d3cff88)}
+.hero h1{font-size:clamp(22px,5.2vw,36px);line-height:1.25;margin:18px 0 12px;background:linear-gradient(90deg,var(--cy),var(--blu),var(--pur));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--mut);max-width:560px;margin:0 auto 22px}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.chips span{border:1px solid var(--line);border-radius:99px;padding:3px 14px;font-size:15px;color:var(--cy)}
+.btn{font:700 17px var(--fd);letter-spacing:.06em;border:0;border-radius:12px;padding:14px 28px;color:#fff;cursor:pointer;background:linear-gradient(90deg,var(--pur),var(--blu));box-shadow:0 0 22px #8f4dff66;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 30px #22e6ff66}
+.btn:focus-visible,.opt:focus-within{outline:2px solid var(--cy);outline-offset:2px}
+.btn.ghost{background:transparent;border:1px solid var(--line);box-shadow:none;color:var(--mut)}
+.btn:disabled{opacity:.5;cursor:wait}
+.top{position:sticky;top:0;background:#070a1cee;backdrop-filter:blur(6px);padding:12px 0 10px;z-index:5;margin-bottom:12px}
+.top small{display:flex;justify-content:space-between;color:var(--mut);font-size:15px;margin-bottom:6px}
+.bar{height:8px;border-radius:9px;background:#161c44;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cy),var(--pur));box-shadow:0 0 12px var(--cy);transition:width .4s ease}
+.step{animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+.step>h2{font-size:clamp(18px,4.5vw,24px);color:var(--cy);margin:8px 0 4px}
+.hint{color:var(--mut);margin:0 0 14px}
+.card{background:linear-gradient(180deg,#121a3c,var(--card));border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:14px;transition:border-color .2s}
+.card.bad{border-color:var(--err)}
+.card.ok{border-color:#3b4aa8}
+.q{margin:0 0 12px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0}
+.opt span{display:block;text-align:center;padding:10px 8px;border:1px solid var(--line);border-radius:10px;background:#0a0f28;cursor:pointer;transition:.15s}
+.opt input:checked+span{background:linear-gradient(90deg,#6a2bd9,#1f6fe0);border-color:var(--cy);box-shadow:0 0 14px #22e6ff55}
+.opt:hover span{border-color:var(--pur)}
+.lik{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.lik .opt span{padding:10px 0;font:800 18px var(--fd)}
+.ends{display:flex;justify-content:space-between;color:var(--mut);font-size:14px;margin-top:6px}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.err{color:var(--err);margin:0 0 10px;min-height:1px}
+.done{text-align:center;padding:50px 0}
+.done h1{font-size:clamp(26px,7vw,44px);background:linear-gradient(90deg,var(--cy),var(--pur));-webkit-background-clip:text;background-clip:text;color:transparent;margin:14px 0}
+.done p{color:var(--mut)}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section id="hero" class="hero">
+<svg viewBox="0 0 320 190" fill="none" aria-hidden="true">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22e6ff"/><stop offset="1" stop-color="#a64dff"/></linearGradient></defs>
+<path d="M70 40h180c28 0 44 28 52 74 6 34-6 56-28 56-18 0-26-14-40-30H86c-14 16-22 30-40 30-22 0-34-22-28-56 8-46 24-74 52-74z" fill="#0f1530" stroke="url(#g)" stroke-width="4"/>
+<path d="M92 84v36M74 102h36" stroke="#22e6ff" stroke-width="8" stroke-linecap="round"/>
+<circle cx="218" cy="86" r="9" fill="#a64dff"/><circle cx="244" cy="108" r="9" fill="#2e8bff"/><circle cx="192" cy="108" r="9" fill="#22e6ff"/><circle cx="218" cy="130" r="9" fill="#ff5d8f"/>
+<path d="M130 70h60" stroke="#2a2f6b" stroke-width="6" stroke-linecap="round"/>
+</svg>
+<h1>Pengaruh Kualitas Grafis dan Gameplay terhadap Kepuasan Pemain Game Mobile</h1>
+<p>Survei untuk tugas Praktikum Statistik Bisnis. Terbuka untuk semua usia yang bermain game mobile. Hanya 12 pertanyaan, sekitar 2 menit. Tanpa nama, tanpa login.</p>
+<div class="chips"><span>Kualitas Grafis</span><span>Gameplay</span><span>Kepuasan Pemain</span></div>
+<button class="btn" id="start">START SURVEY</button>
+</section>
+
+<section id="survey" hidden>
+<div class="top"><small><span id="stl"></span><span id="pct"></span></small><div class="bar"><i id="fill"></i></div></div>
+<div id="stage"></div>
+<p class="err" id="err" role="alert"></p>
+<div class="nav"><button class="btn ghost" id="back">BACK</button><button class="btn" id="next">NEXT</button></div>
+</section>
+
+<section id="done" class="done" hidden>
+<svg width="90" viewBox="0 0 90 90" fill="none"><circle cx="45" cy="45" r="40" stroke="url(#g)" stroke-width="5" stroke="#22e6ff"/><path d="M26 47l14 14 25-30" stroke="#a64dff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<h1>SURVEY COMPLETED</h1>
+<p>Terima kasih. Jawabanmu sudah terkirim.</p>
+</section>
+</div>
+
+<script>
+// ===== PENGATURAN: tempel URL Web App Google Apps Script di sini =====
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbxzfkAt7bVPrXtadxxmYj70W6GafeyKVxjQiJ_OX4XYtxAe8cQ8tNrRI5LHiAci62I/exec";
+// =====================================================================
+
+const LABEL = ["Sangat Tidak Setuju","Tidak Setuju","Netral","Setuju","Sangat Setuju"];
+const STEPS = [
+ {t:"Identitas Responden",h:"Pilih satu jawaban untuk setiap pertanyaan.",q:[
+  {k:"jenis_kelamin",s:"Jenis Kelamin",o:["Laki-laki","Perempuan"]},
+  {k:"usia",s:"Usia",o:["Di bawah 15 tahun","15–18 tahun","19–25 tahun","26–35 tahun","36–45 tahun","Di atas 45 tahun"]},
+  {k:"game",s:"Game mobile yang paling sering dimainkan",o:["Mobile Legends","Free Fire","PUBG Mobile","Genshin Impact","Roblox","Honor of Kings","Lainnya"]}]},
+ {t:"Kualitas Grafis",l:1,q:[
+  {k:"x1_1",s:"Gambar dalam game terlihat jelas."},
+  {k:"x1_2",s:"Tampilan visual game terlihat menarik."},
+  {k:"x1_3",s:"Detail tampilan dalam game terlihat baik."}]},
+ {t:"Gameplay",l:1,q:[
+  {k:"x2_1",s:"Kontrol permainan mudah saya pahami."},
+  {k:"x2_2",s:"Game memberikan interaksi yang menarik selama dimainkan."},
+  {k:"x2_3",s:"Game memiliki variasi aktivitas atau tantangan yang menarik."}]},
+ {t:"Kepuasan Pemain",l:1,q:[
+  {k:"y_1",s:"Saya merasa senang ketika memainkan game tersebut."},
+  {k:"y_2",s:"Saya merasa puas dengan pengalaman bermain game tersebut."},
+  {k:"y_3",s:"Saya tertarik untuk memainkan game tersebut kembali."}]}
+];
+const $=id=>document.getElementById(id);
+const ans={};let cur=0,sending=false;
+
+function render(){
+  const st=STEPS[cur];
+  $("stl").textContent="Bagian "+(cur+1)+" dari "+STEPS.length+" · "+st.t;
+  $("pct").textContent=Math.round(cur/STEPS.length*100)+"%";
+  $("fill").style.width=(cur/STEPS.length*100)+"%";
+  $("err").textContent="";
+  $("back").style.visibility=cur?"visible":"hidden";
+  $("next").textContent=cur===STEPS.length-1?"SUBMIT":"NEXT";
+  let h='<div class="step"><h2></h2><p class="hint"></p>';
+  st.q.forEach(q=>{
+    h+='<div class="card" data-k="'+q.k+'"><p class="q"></p>';
+    if(st.l){
+      h+='<div class="lik">'+[1,2,3,4,5].map(n=>'<label class="opt" title="'+LABEL[n-1]+'"><input type="radio" name="'+q.k+'" value="'+n+'"><span>'+n+'</span></label>').join("")+'</div><div class="ends"><span>1 = Sangat Tidak Setuju</span><span>5 = Sangat Setuju</span></div>';
+    }else{
+      h+='<div class="opts">'+q.o.map((o,i)=>'<label class="opt"><input type="radio" name="'+q.k+'" value="'+i+'"><span></span></label>').join("")+'</div>';
+    }
+    h+='</div>';
+  });
+  $("stage").innerHTML=h+'</div>';
+  const s=$("stage");
+  s.querySelector("h2").textContent=st.t;
+  s.querySelector(".hint").textContent=st.l?"Jawablah seluruh pernyataan berdasarkan satu game mobile yang paling sering Anda mainkan.":st.h;
+  s.querySelectorAll(".card").forEach((c,i)=>{
+    const q=st.q[i];
+    c.querySelector(".q").textContent=(st.l?"":"")+q.s;
+    if(!st.l)c.querySelectorAll(".opt span").forEach((sp,j)=>sp.textContent=q.o[j]);
+    c.querySelectorAll("input").forEach(inp=>{
+      if(ans[q.k]===inp.value)inp.checked=true;
+      inp.onchange=()=>{ans[q.k]=inp.value;c.classList.remove("bad");c.classList.add("ok");$("err").textContent=""};
+    });
+  });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function valid(){
+  let first=null;
+  STEPS[cur].q.forEach(q=>{
+    const c=document.querySelector('[data-k="'+q.k+'"]');
+    if(ans[q.k]===undefined){c.classList.add("bad");first=first||c}
+  });
+  if(first){$("err").textContent="Semua pertanyaan wajib diisi.";first.scrollIntoView({behavior:"smooth",block:"center"});return false}
+  return true;
+}
+async function submit(){
+  if(sending)return;
+  if(!ENDPOINT){$("err").textContent="Pengiriman belum aktif: URL Google Apps Script belum diisi di file index.html.";return}
+  const d={waktu:new Date().toISOString()};
+  STEPS[0].q.forEach(q=>d[q.k]=q.o[+ans[q.k]]);
+  STEPS.slice(1).forEach(s=>s.q.forEach(q=>d[q.k]=+ans[q.k]));
+  sending=true;$("next").disabled=true;$("next").textContent="MENGIRIM...";
+  try{
+    const r=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(d)});
+    const j=await r.json();
+    if(!j.ok)throw new Error(j.error||"gagal");
+    $("survey").hidden=true;$("done").hidden=false;window.scrollTo(0,0);
+  }catch(e){
+    $("err").textContent="Jawaban belum terkirim. Periksa koneksi lalu tekan SUBMIT lagi.";
+    $("next").textContent="SUBMIT";
+  }
+  sending=false;$("next").disabled=false;
+}
+$("start").onclick=()=>{$("hero").hidden=true;$("survey").hidden=false;render()};
+$("back").onclick=()=>{if(cur>0){cur--;render()}};
+$("next").onclick=()=>{
+  if(!valid())return;
+  if(cur<STEPS.length-1){cur++;render()}else submit();
+};
+</script>
+</body>
+</html>
